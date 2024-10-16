@@ -6,6 +6,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -50,6 +51,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onBtnCountClick(View view) {
+        if(this.etUserInput.getText().toString().matches("")){
+            Toast.makeText(this, "Text field empty", Toast.LENGTH_SHORT).show();
+            return;
+        }
         if(this.spSelectionOptions.getSelectedItem().toString().equalsIgnoreCase("Chars")) {
             String userPhrase = this.etUserInput.getText().toString();
             int charsCount = TextCounter.getCharsCount(userPhrase);
